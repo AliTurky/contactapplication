@@ -1,0 +1,27 @@
+<h2>contacts</h2>
+<ul>
+  <ng-container *ngFor ="let contact of contact">
+  <li >
+    {{contact.name}} ({{contact.phonenumber}})
+    <button (click)="editContact(contact)">Edit</button>
+    <button (click)="removecontact(contact)">Remove</button>
+  </li>
+  <!-- <li>
+    {{contact.phonenumber}}
+  </li> -->
+  </ng-container>
+</ul>
+<div>
+  <label for="newcontact">Add new contact</label>
+  <input type="text" name="newcontact"[(ngModel)]="newcontact">
+  <button (click)="addcontact()">Add</button>
+
+</div>
+<div *ngIf="editMode">
+  <input [(ngModel)]="newcontact" placeholder="New Name">
+  <button (click)="saveEdit()">Save</button>
+  <button (click)="cancelEdit()">Cancel</button>
+</div>
+<input [(ngModel)]="searchTerm" placeholder="Search by Name">
+<button (click)="searchContacts()">Search</button>
+<button (click)="resetSearch()">Reset</button>
